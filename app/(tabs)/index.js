@@ -81,19 +81,7 @@ function HomeScreen(initialParams) {
           </Text>
         </View>
         <View style={styles.picturearea}>
-          <Image
-              source={{
-                uri: "https://www.svgrepo.com/show/108986/left-arrow.svg",
-              }}
-              style={{ height: 30, width: 20 }}
-            />
           <MyCarousel nums={ {plantNum, numPictures} }/>
-          <Image
-            source={{
-              uri: "https://www.svgrepo.com/show/27797/right-arrow.svg",
-            }}
-            style={{ height: 30, width: 20 }}
-          />
         </View>
 
         <View style={[styles.picturearea, {marginHorizontal: 20}]}>
@@ -114,7 +102,7 @@ function HomeScreen(initialParams) {
             />
           </View>
         </View>
-
+        <View style={{flex: 1.9}}>
         <TabView
           renderTabBar={renderTabBar}
           navigationState={{ index, routes }}
@@ -122,24 +110,7 @@ function HomeScreen(initialParams) {
           onIndexChange={setIndex}
           initialLayout={{ width: layout.width }}
         />
-
-        {/* <View style={styles.tabbar}>
-            <View style={{flex: .8, backgroundColor: "#F9F9ED",}}>
-            <Text style={styles.tabText}>
-              Personal Info
-            </Text>
-            </View>
-            <View style={{flex: .6, backgroundColor: "#E5DEB2",}}>
-            <Text style={styles.tabText}>
-              General
-            </Text>
-            </View>
-          </View>
-          <View style={styles.maintext}>
-            <Text style={[styles.bodyText, {marginHorizontal: 20,}]}>
-              This is a bunch of text that talks about your particular plant. How cool.
-            </Text>
-          </View> */}
+        </View>
       </LinearGradient>
     </View>
   );
