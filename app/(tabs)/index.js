@@ -1,11 +1,5 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, View, Text, Image, Platform, ImageBackground, Dimensions, useWindowDimensions } from 'react-native';
+import { StyleSheet, View, Text, Image, ImageBackground, Dimensions, useWindowDimensions } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 import { LinearGradient } from "expo-linear-gradient";
 import React from 'react';
 import MyCarousel from '../image_carousel.js';
@@ -18,13 +12,14 @@ const windowWidth = Dimensions.get("window").width;
 
 function HomeScreen(initialParams) {
   const { plantNum, numPictures, plantType, plantAge } = initialParams.route.params
+  const plantName = initialParams.route.name + "'s info"
 
   const layout = useWindowDimensions();
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'first', title: 'Personal Info' },
-    { key: 'second', title: 'General Info' },
+    { key: 'first', title: plantName},
+    { key: 'second', title: 'Species Info' },
   ]);
 
   const FirstRoute = () => (
@@ -81,12 +76,6 @@ function HomeScreen(initialParams) {
           ></ImageBackground>
       <LinearGradient style={{width: "100%", height: "100%"}} colors={["rgba(247, 236, 168, .4)", "rgba(195, 209, 140, .4)"]}>
         <View style={styles.topbar}>
-          <Image
-              source={{
-                uri: "https://www.svgrepo.com/show/493725/sidebar-expand-layout-toggle-nav-navbar.svg",
-              }}
-              style={{ height: 30, width: 30, margin: 8, position: "absolute", left: 0}}
-            />
           <Text style={styles.titleText}>
             {initialParams.route.name}
           </Text>
@@ -161,9 +150,28 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer independent={true}>
-      <Drawer.Navigator initialRouteName="Silia">
-        <Drawer.Screen name="Bertrand" component={HomeScreen} initialParams={{ plantNum: 0, numPictures: 5, plantType: "Bell Pepper", plantAge: "8 mo"}}/>
-        <Drawer.Screen name="Silia" component={HomeScreen} initialParams={{ plantNum: 1, numPictures: 3, plantType: "Firefly Petunia", plantAge: "2 mo"}}/>
+      <Drawer.Navigator initialRouteName="Silia"
+          screenOptions={{
+            drawerStyle: {
+              backgroundColor: '#BCD68D',
+            },
+            headerStyle: {
+              backgroundColor: "rgba(247, 236, 168, .4)",
+              shadowColor: "transparent",
+              justifyContent: "center",
+              alignItems: "center",
+              alignSelf: "center"
+            },
+            drawerContentContainerStyle: {
+              color: '#BCD68D',
+            }
+          }}> 
+        <Drawer.Screen name="Bertrand" component={HomeScreen} initialParams={{ plantNum: 0, numPictures: 5, plantType: "Bell Pepper", plantAge: "8 mo"}} 
+        options={{headerTitle: "",
+          headerShadowVisible: false,}}/>
+        <Drawer.Screen name="Silia" component={HomeScreen} initialParams={{ plantNum: 1, numPictures: 3, plantType: "Firefly Petunia", plantAge: "2 mo"}}
+        options={{headerTitle: "",
+          headerShadowVisible: false,}}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -192,7 +200,7 @@ const styles = StyleSheet.create({
     alignSelf:"center",
     alignContent: "center",
     fontSize: 26,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   subtitleText: {
     fontSize: 18,
@@ -210,7 +218,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   topbar: {
-    margin: 15,
+    marginBottom: 15,
     paddingBottom: 20,
     display: "flex", 
     flexDirection: "row", 
