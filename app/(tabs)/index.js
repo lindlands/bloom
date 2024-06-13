@@ -161,7 +161,7 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer independent={true}>
-      <Drawer.Navigator initialRouteName="Bertrand">
+      <Drawer.Navigator initialRouteName="Silia">
         <Drawer.Screen name="Bertrand" component={HomeScreen} initialParams={{ plantNum: 0, numPictures: 5, plantType: "Bell Pepper", plantAge: "8 mo"}}/>
         <Drawer.Screen name="Silia" component={HomeScreen} initialParams={{ plantNum: 1, numPictures: 3, plantType: "Firefly Petunia", plantAge: "2 mo"}}/>
       </Drawer.Navigator>
