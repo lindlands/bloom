@@ -129,9 +129,6 @@ export default function App() {
             headerStyle: {
               backgroundColor: "rgba(247, 236, 168, .4)",
               shadowColor: "transparent",
-              justifyContent: "center",
-              alignItems: "center",
-              alignSelf: "center"
             },
             drawerContentContainerStyle: {
               color: '#BCD68D',
