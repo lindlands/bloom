@@ -10,8 +10,8 @@ export default function MyCarousel(nums) {
     slides
   })
 
-  const images = [[<Image source={require("../assets/images/bertrand1.jpg")} style={styles.image} />, <Image source={require("../assets/images/bertrand2.jpg")} style={styles.image} />, <Image source={require("../assets/images/bertrand3.jpg")} style={styles.image} />, <Image source={require("../assets/images/bertrand4.jpg")} style={styles.image} />, <Image source={require("../assets/images/bertrand5.jpg")} style={styles.image} />],
-                   <Image source={require("../assets/images/Silia1.jpg")} style={styles.image} />, <Image source={require("../assets/images/Silia2.jpg")} style={styles.image} />, <Image source={require("../assets/images/Silia3.jpg")} style={styles.image} />]
+  const images = [[<Image source={require("../assets/images/bertrand1-small.png")} style={styles.image} />, <Image source={require("../assets/images/bertrand2-small.png")} style={styles.image} />, <Image source={require("../assets/images/bertrand3-small.png")} style={styles.image} />, <Image source={require("../assets/images/bertrand4-small.png")} style={styles.image} />, <Image source={require("../assets/images/bertrand5-small.png")} style={styles.image} />],
+                   <Image source={require("../assets/images/Silia1-small.png")} style={styles.image} />, <Image source={require("../assets/images/Silia2-small.png")} style={styles.image} />, <Image source={require("../assets/images/Silia3-small.png")} style={styles.image} />]
 
   function render_images(key) {
     return (
@@ -19,20 +19,44 @@ export default function MyCarousel(nums) {
     )
   }
 
-  return (
-      <View style={styles.slider} {...slider.containerProps}>
-        {[...Array(slides).keys()].map(key => {
-          return (
-            <View key={key} {...slider.slidesProps[key]}>
-              <View style={{...styles.slide}}>
-                {render_images(key)}
-                <Text style={styles.text}> {key + 1} / {nums.nums.numPictures} </Text>
+  if (slides == 0) {
+    return (
+      <View>
+      <Image
+          source={{
+            uri: "../assets/images/Funny_no_image.jpg",
+          }}
+          style={{ height: 30, width: 30, margin: 8}}
+        />
+        <Text style={styles.no_images_yet}> 
+          No images yet
+        </Text>
+    </View>
+    )
+    
+
+
+    // <Image 
+    //   source={require("../assets/images/Funny_no_image.jpg")} 
+    //   style={styles.image} />
+    // <Text style={styles.text}> {key + 1} / {nums.nums.numPictures} </Text>
+  } else {
+    return (
+        <View style={styles.slider} {...slider.containerProps}>
+          {[...Array(slides).keys()].map(key => {
+            return (
+              <View key={key} {...slider.slidesProps[key]}>
+                <View style={{...styles.slide}}>
+                  {render_images(key)}
+                  <Text style={styles.text}> {key + 1} / {nums.nums.numPictures} </Text>
+                </View>
               </View>
-            </View>
-          )
-        })}
-      </View>
-  )
+            )
+          })}
+        </View>
+    )
+  }
+  
 }
 
 const styles = {
@@ -51,13 +75,17 @@ const styles = {
     //backgroundColor: 'black',
   },
   text: {
-    color: 'white',
+    color: '#bcd68d',
     fontSize: 20,
   },
   image: {
     height: 150, 
     width: 150, 
     marginHorizontal: 30
+  },
+  no_images_yet: {
+    color: '#333333',
+    fontSize: 20,
   }
 }
 

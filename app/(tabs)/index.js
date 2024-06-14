@@ -137,7 +137,7 @@ export default function App() {
         <Drawer.Screen name="Bertrand" component={HomeScreen} initialParams={{ plantNum: 0, numPictures: 5, plantType: "Bell Pepper", plantAge: "8 mo"}} 
         options={{headerTitle: "",
           headerShadowVisible: false,}}/>
-        <Drawer.Screen name="Silia" component={HomeScreen} initialParams={{ plantNum: 1, numPictures: 3, plantType: "Firefly Petunia", plantAge: "2 mo"}}
+        <Drawer.Screen name="Silia" component={HomeScreen} initialParams={{ plantNum: 1, numPictures: 0, plantType: "Firefly Petunia", plantAge: "2 mo"}}
         options={{headerTitle: "",
           headerShadowVisible: false,}}/>
       </Drawer.Navigator>
